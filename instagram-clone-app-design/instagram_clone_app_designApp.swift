@@ -11,7 +11,7 @@ import SwiftUI
 struct instagram_clone_app_designApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Home()
         }
     }
 }
