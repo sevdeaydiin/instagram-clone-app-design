@@ -8,18 +8,63 @@
 import SwiftUI
 
 struct SelfProfile: View {
+    @State var index: Int = 0
     var body: some View {
         VStack {
-            
             NavBar()
             ProfileDetail()
+            
+            HStack(spacing: 90) {
+                Button(action: { index = 0 }) {
+                    Image(systemName: "squareshape.split.3x3")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                }.foregroundColor(index == 0 ? .black : .gray)
+                Button(action: {index = 1}) {
+                    Image("reels")
+                        .resizable()
+                        .frame(width: 25, height: 25)
+                }.foregroundColor(index == 1 ? .black : .gray)
+                Button(action: { index = 2}) {
+                    Image(systemName: "person.crop.square")
+                        .resizable()
+                        .frame(width: 20, height: 20)
+                }.foregroundColor(index == 2 ? .black : .gray)
+            }.padding()
+            
             Spacer()
+            
+            
+            
         }
     }
 }
 
 #Preview {
     SelfProfile()
+}
+
+struct PostsView: View {
+    var body: some View {
+        VStack {
+        }
+    }
+}
+
+struct ReelsView: View {
+    var body: some View {
+        VStack {
+            
+        }
+    }
+}
+
+struct TagsView: View {
+    var body: some View {
+        VStack {
+            
+        }
+    }
 }
 
 private struct NavBar: View {
