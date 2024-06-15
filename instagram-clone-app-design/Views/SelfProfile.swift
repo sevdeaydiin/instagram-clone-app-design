@@ -2,7 +2,7 @@
 //  SelfProfile.swift
 //  instagram-clone-app-design
 //
-//  Created by Sevde Aydın on 14.06.2024.
+//  Created by Sevde Aydın on 15.06.2024.
 //
 
 import SwiftUI
