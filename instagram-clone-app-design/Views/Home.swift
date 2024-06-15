@@ -23,7 +23,7 @@ struct Home: View {
     Home()
 }
 
-struct NavBar: View {
+private struct NavBar: View {
     var body: some View {
         HStack() {
             Text("Instagram")
