@@ -10,34 +10,58 @@ import SwiftUI
 struct SelfProfile: View {
     @State var index: Int = 0
     var body: some View {
-        VStack {
-            NavBar()
-            ProfileDetail()
-            
-            HStack(spacing: 90) {
-                Button(action: { index = 0 }) {
-                    Image(systemName: "squareshape.split.3x3")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                }.foregroundColor(index == 0 ? .black : .gray)
-                Button(action: {index = 1}) {
-                    Image("reels")
-                        .resizable()
-                        .frame(width: 25, height: 25)
-                }.foregroundColor(index == 1 ? .black : .gray)
-                Button(action: { index = 2}) {
-                    Image(systemName: "person.crop.square")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                }.foregroundColor(index == 2 ? .black : .gray)
-            }.padding()
-            
-            Spacer()
-            
-            
-            
+        
+        NavigationStack {
+            VStack {
+                //NavBar()
+                ProfileDetail()
+                
+                HStack(spacing: 100) {
+                    Button(action: { index = 0 }) {
+                        Image(systemName: "squareshape.split.3x3")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    }.foregroundColor(index == 0 ? .black : .gray)
+                    Button(action: { index = 1 }) {
+                        Image(index == 1 ? "reels" : "unselected-reels")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(index == 1 ? .black : .gray)
+                    }.foregroundColor(index == 1 ? .black : .gray)
+                    Button(action: { index = 2}) {
+                        Image(systemName: "person.crop.square")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    }.foregroundColor(index == 2 ? .black : .gray)
+                }.padding(.top, 20)
+                
+                if index == 0 {
+                    PostsView()
+                } else if index == 1 {
+                    ReelsView()
+                }
+                
+                Spacer()
+                
+                
+                
+            }.toolbar {
+                
+                ToolbarItem(placement: .topBarLeading) {
+                    HStack(spacing: 3) {
+                        Image(systemName: "lock")
+                        Text("sevdeaydiin")
+                            .fontWeight(.semibold)
+                            .font(.title2)
+                    }
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    TopBarTrailing()
+                }
+        }
         }
     }
+    
 }
 
 #Preview {
@@ -45,16 +69,30 @@ struct SelfProfile: View {
 }
 
 struct PostsView: View {
+    private let gridItems: [GridItem] = [
+        .init(.flexible(), spacing: 2),
+        .init(.flexible(), spacing: 2),
+        .init(.flexible(), spacing: 2),
+    ]
     var body: some View {
-        VStack {
+        ScrollView {
+            LazyVGrid(columns: gridItems, spacing: 2) {
+                ForEach(0...9, id: \.self) { index in
+                    Image("image2")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        //.frame(height: UIScreen.main.bounds.width / 3)
+                }
+            }
         }
+        
     }
 }
 
 struct ReelsView: View {
     var body: some View {
         VStack {
-            
+            Text("reels")
         }
     }
 }
@@ -67,17 +105,17 @@ struct TagsView: View {
     }
 }
 
-private struct NavBar: View {
+private struct TopBarTrailing: View {
     var body: some View {
-        HStack(spacing: 3) {
-            Image(systemName: "lock")
-            Text("sevdeaydiin")
-                .fontWeight(.semibold)
-                .font(.title2)
-            Spacer()
-            Image(systemName: "plus.square")
-                .padding(.trailing)
-            Image(systemName: "text.justify")
+        HStack(spacing: 5) {
+            Button {} label: {
+                Image(systemName: "plus.square")
+                    .foregroundColor(.tabBarItem)
+            }
+            Button {} label: {
+                Image(systemName: "line.3.horizontal")
+                    .foregroundColor(.tabBarItem)
+            }
             
         }.padding(.horizontal)
             .padding(.bottom, 10)
@@ -103,27 +141,9 @@ struct ProfileDetail: View {
                     //    .position(x: 70, y: 80))
                 .padding(.leading, 8)
             
-            VStack {
-                Text("18 ")
-                    .fontWeight(.semibold)
-                    .font(.subheadline)
-                Text("posts")
-                    .font(.caption)
-            }
-            VStack {
-                Text("261")
-                    .fontWeight(.semibold)
-                    .font(.subheadline)
-                Text("followers")
-                    .font(.caption)
-            }
-            VStack {
-                Text("326")
-                    .fontWeight(.semibold)
-                    .font(.subheadline)
-                Text("following")
-                    .font(.caption)
-            }
+            FollowStateView(value: 18, title: "posts")
+            FollowStateView(value: 261, title: "followers")
+            FollowStateView(value: 326, title: "following")
         }
             VStack(alignment: .leading) {
                 Text("sevde aydın")

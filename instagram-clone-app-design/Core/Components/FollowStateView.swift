@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct FollowStateView: View {
+    let value: Int
+    let title: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("\(value)")
+                .fontWeight(.semibold)
+                .font(.subheadline)
+            Text("\(title)")
+                .font(.caption)
+        }
     }
 }
 
 #Preview {
-    FollowStateView()
+    FollowStateView(value: 12, title: "posts")
 }

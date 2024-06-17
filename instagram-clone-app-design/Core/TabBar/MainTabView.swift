@@ -8,8 +8,23 @@
 import SwiftUI
 
 struct MainTabView: View {
+    let height: CGFloat = UIScreen.main.bounds.height
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            Home()
+                .tabItem { Image(systemName: "house") }
+            Search()
+                .tabItem { Image(systemName: "magnifyingglass") }
+            PostAdd()
+                .tabItem { Image(systemName: "plus.square") }
+            ReelsPlay()
+                .tabItem { Image(systemName: "play.rectangle") }
+            SelfProfile()
+                .tabItem { Image(systemName: "person.crop.circle") }
+        }
+        .accentColor(.tabBarItem)
+        .frame(height: height)
+            
     }
 }
 
