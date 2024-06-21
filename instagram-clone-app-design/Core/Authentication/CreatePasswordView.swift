@@ -27,14 +27,24 @@ struct CreatePasswordView: View {
                 
                 TextField("Password", text: $password)
                     .autocapitalization(.none)
-                    .font(.subheadline)
-                    .padding(12)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                    .padding(.horizontal, 24)
-                    .padding(.bottom, 10)
+                    .modifier(IGTextFieldModifier())
                 
-                LoginButton(text: "Next", action: { CreatePasswordView().navigationBarBackButtonHidden(true) })
+                NavigationLink{
+                    SignUpView().navigationBarBackButtonHidden(true)
+                } label: {
+                    Text("Next")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.wB)
+                        .padding(.vertical, 12)
+                        
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .background(Color(.systemBlue))
+                .cornerRadius(10)
+                .padding(.horizontal, 24)
+                
+                //LoginButton(text: "Next", action: { CreatePasswordView().navigationBarBackButtonHidden(true) })
                 Spacer()
 
             }
