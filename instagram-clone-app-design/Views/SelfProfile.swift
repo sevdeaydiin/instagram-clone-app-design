@@ -11,7 +11,7 @@ struct SelfProfile: View {
     @State var index: Int = 0
     var body: some View {
         
-        NavigationStack {
+        //NavigationStack {
             VStack {
                 //NavBar()
                 ProfileDetail()
@@ -21,18 +21,17 @@ struct SelfProfile: View {
                         Image(systemName: "squareshape.split.3x3")
                             .resizable()
                             .frame(width: 20, height: 20)
-                    }.foregroundColor(index == 0 ? .black : .gray)
+                    }.foregroundColor(index == 0 ? .tabBarItem : .gray)
                     Button(action: { index = 1 }) {
                         Image(index == 1 ? "reels" : "unselected-reels")
                             .resizable()
                             .frame(width: 25, height: 25)
-                            .foregroundColor(index == 1 ? .black : .gray)
-                    }.foregroundColor(index == 1 ? .black : .gray)
+                    }
                     Button(action: { index = 2}) {
                         Image(systemName: "person.crop.square")
                             .resizable()
                             .frame(width: 20, height: 20)
-                    }.foregroundColor(index == 2 ? .black : .gray)
+                    }.foregroundColor(index == 2 ? .tabBarItem : .gray)
                 }.padding(.top, 20)
                 
                 if index == 0 {
@@ -60,7 +59,7 @@ struct SelfProfile: View {
                 }
         }
         }
-    }
+    //}
     
 }
 
@@ -68,7 +67,7 @@ struct SelfProfile: View {
     SelfProfile()
 }
 
-struct PostsView: View {
+private struct PostsView: View {
     private let gridItems: [GridItem] = [
         .init(.flexible(), spacing: 2),
         .init(.flexible(), spacing: 2),
@@ -89,7 +88,7 @@ struct PostsView: View {
     }
 }
 
-struct ReelsView: View {
+private struct ReelsView: View {
     var body: some View {
         VStack {
             Text("reels")
@@ -97,7 +96,7 @@ struct ReelsView: View {
     }
 }
 
-struct TagsView: View {
+private struct TagsView: View {
     var body: some View {
         VStack {
             
@@ -122,24 +121,36 @@ private struct TopBarTrailing: View {
     }
 }
 
-struct ProfileDetail: View {
+private struct ProfileDetail: View {
     var body: some View {
         
         VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 40) {
-            Image("image")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 90, height: 90)
-                .clipShape(Circle())
-                //.overlay(
-                    //Image(systemName: "plus")
-                    //    .overlay(Circle().stroke(Color.white, lineWidth: 2))
-                    //    .foregroundColor(.white)
-                    //    .background(Color.blue)
-                    //    .cornerRadius(20)
-                    //    .position(x: 70, y: 80))
-                .padding(.leading, 8)
+            ZStack(alignment: .bottomTrailing) {
+                                Image("image3")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 90, height: 90)
+                                    .clipShape(Circle())
+                                
+                ZStack {
+                                        Circle()
+                                            .fill(Color.blue)
+                                            .frame(width: 20, height: 20)
+                                            .overlay(
+                                                Circle()
+                                                    .stroke(.wB, lineWidth: 3)
+                                            )
+                                        
+                                        Text("+")
+                                            .font(.system(size: 18))
+                                            .fontWeight(.semibold)
+                                            .foregroundColor(.wB)
+                                            
+                                    }
+                                    .offset(x: -5, y: 0)
+                                }
+                                .padding(.leading, 8)
             
             FollowStateView(value: 18, title: "posts")
             FollowStateView(value: 261, title: "followers")
@@ -159,7 +170,7 @@ struct ProfileDetail: View {
                     Text("Edit profile")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundColor(.black)
+                        .foregroundColor(.tabBarItem)
                         .padding(.horizontal, 35)
                         .padding(.vertical, 8)
                         
@@ -170,7 +181,7 @@ struct ProfileDetail: View {
                     Text("Share profile")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundColor(.black)
+                        .foregroundColor(.tabBarItem)
                         .padding(.horizontal, 35)
                         .padding(.vertical, 8)
                         
@@ -178,7 +189,7 @@ struct ProfileDetail: View {
                     .cornerRadius(7)
                 Button(action: {}) {
                     Image(systemName: "person.badge.plus")
-                        .foregroundColor(.black)
+                        .foregroundColor(.tabBarItem)
                         .padding(.horizontal, 11)
                         .padding(.vertical, 6)
                         

@@ -13,7 +13,7 @@ struct MainTabView: View {
         TabView {
             Home()
                 .tabItem { Image(systemName: "house") }
-            Search()
+            SearchView()
                 .tabItem { Image(systemName: "magnifyingglass") }
             PostAdd()
                 .tabItem { Image(systemName: "plus.square") }
