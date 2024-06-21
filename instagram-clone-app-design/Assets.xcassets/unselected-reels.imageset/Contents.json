@@ -3,6 +3,16 @@
     {
       "filename" : "unselected-reels.png",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "unselected-reels-dark.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

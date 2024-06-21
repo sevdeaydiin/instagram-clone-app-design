@@ -3,6 +3,16 @@
     {
       "filename" : "reels.svg",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "reels-dark.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {
