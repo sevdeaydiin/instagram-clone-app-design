@@ -27,15 +27,10 @@ struct CreateUsernameView: View {
                 
                 TextField("Username", text: $username)
                     .autocapitalization(.none)
-                    .font(.subheadline)
-                    .padding(12)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
-                    .padding(.horizontal, 24)
-                    .padding(.bottom, 10)
+                    .modifier(IGTextFieldModifier())
                 
                 NavigationLink{
-                    CreateUsernameView().navigationBarBackButtonHidden(true)
+                    CreatePasswordView().navigationBarBackButtonHidden(true)
                 } label: {
                     Text("Next")
                         .font(.subheadline)
