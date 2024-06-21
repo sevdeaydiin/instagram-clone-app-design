@@ -8,8 +8,51 @@
 import SwiftUI
 
 struct SearchView: View {
+    @State private var searchText = ""
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            ScrollView {
+                LazyVStack {
+                    ForEach(User.MOCK_USER) { user in
+                        NavigationLink(value: user) {
+                            HStack {
+                                Image(user.profileImageUrl ?? "")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 40, height: 40)
+                                    .clipShape(Circle())
+                                
+                                VStack(alignment: .leading) {
+                                    Text(user.username)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.tabBarItem)
+                                    if let fullname = user.fullname {
+                                        Text(fullname)
+                                            .foregroundColor(.tabBarItem)
+                                    }
+                                    
+                                }.font(.footnote)
+                                Spacer()
+                                Button( action: {}, label: {
+                                    Text("x")
+                                        .fontWeight(.light)
+                                        .font(.callout)
+                                        .foregroundStyle(.gray)
+                                })
+                            }.padding(.horizontal)
+                                .padding(.vertical, 3)
+                        }.navigationBarBackButtonHidden()
+                    }
+                }
+                .searchable(text: $searchText, prompt: "Search...")
+            }
+            .navigationDestination(for: User.self, destination: { user in
+                UserProfileView(user: user)
+            })
+
+                .navigationBarTitleDisplayMode(.inline)
+        }.navigationBarBackButtonHidden()
     }
 }
 

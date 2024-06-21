@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct LoginButton: View {
+    var text = ""
+    @State var action: () -> Void = {}
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button{
+            action()
+        } label: {
+            Text("\(text)")
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .foregroundStyle(.wB)
+                .padding(.vertical, 12)
+                
+        }
+        .frame(maxWidth: .infinity, alignment: .center)
+        .background(Color(.systemBlue))
+        .cornerRadius(10)
+        .padding(.horizontal, 24)
     }
 }
 
-#Preview {
-    LoginButton()
-}

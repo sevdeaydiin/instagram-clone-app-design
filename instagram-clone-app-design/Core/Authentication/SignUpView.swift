@@ -8,8 +8,52 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                Text("Welcome Sevde!")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .foregroundStyle(Color.tabBarItem)
+                
+                Text("Click below to complete registration and start using Instagram.")
+                    .font(.footnote)
+                    .foregroundStyle(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 24)
+                
+                NavigationLink{
+                    LoginView().navigationBarBackButtonHidden()
+                } label: {
+                    Text("Next")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                        .foregroundStyle(.wB)
+                        .padding(.vertical, 12)
+                    
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+                .background(Color(.systemBlue))
+                .cornerRadius(10)
+                .padding(.horizontal, 24)
+                
+                //LoginButton(text: "Next", action: { CreatePasswordView().navigationBarBackButtonHidden(true) })
+                Spacer()
+                
+            }
+            .padding(.top, 20)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Image(systemName: "chevron.left")
+                        .imageScale(.large)
+                        .onTapGesture {
+                            dismiss()
+                        }
+                }
+            }
+        }
     }
 }
 

@@ -7,16 +7,20 @@
 
 import SwiftUI
 
-struct LoggedInUserProfileView: View {
+struct UserProfileView: View {
     @State var index: Int = 0
+    @Environment(\.dismiss) var dismiss
+    let user: User
+    
+    
     var body: some View {
         
         //NavigationStack {
             VStack {
-                //NavBar()
-                ProfileDetail()
+                //Text("\(user.username)")
+                ProfileDetail(user: user)
                 
-                HStack(spacing: 100) {
+                HStack(spacing: 150) {
                     Button(action: { index = 0 }) {
                         Image(systemName: "squareshape.split.3x3")
                             .resizable()
@@ -27,11 +31,6 @@ struct LoggedInUserProfileView: View {
                             .resizable()
                             .frame(width: 25, height: 25)
                     }
-                    Button(action: { index = 2}) {
-                        Image(systemName: "person.crop.square")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                    }.foregroundColor(index == 2 ? .tabBarItem : .gray)
                 }.padding(.top, 20)
                 
                 if index == 0 {
@@ -41,30 +40,33 @@ struct LoggedInUserProfileView: View {
                 }
                 
                 Spacer()
-                
-                
-                
+                  
             }.toolbar {
-                
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 3) {
-                        Image(systemName: "lock")
-                        Text("sevdeaydiin")
-                            .fontWeight(.semibold)
-                            .font(.title2)
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.tabBarItem)
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    TopBarTrailing()
+                    HStack {
+                        //Text("\(user.username)").padding(.trailing, UIScreen.main.bounds.width / 4.5)
+                        Image(systemName: "bell")
+                        Image(systemName: "ellipsis")
+                    }
                 }
-        }
-        }
+                
+            }.navigationBarBackButtonHidden()
+            .navigationTitle("\(user.username)")
+    }
     //}
     
 }
 
 #Preview {
-    LoggedInUserProfileView()
+    UserProfileView(user: User.MOCK_USER[0])
 }
 
 private struct PostsView: View {
@@ -76,7 +78,7 @@ private struct PostsView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: gridItems, spacing: 2) {
-                ForEach(0...9, id: \.self) { index in
+                ForEach(0...0, id: \.self) { index in
                     Image("image2")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -122,12 +124,13 @@ private struct TopBarTrailing: View {
 }
 
 private struct ProfileDetail: View {
+    let user: User
     var body: some View {
         
         VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 40) {
             ZStack(alignment: .bottomTrailing) {
-                                Image("image3")
+                Image("\(user.profileImageUrl ?? "")")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 90, height: 90)
@@ -150,24 +153,27 @@ private struct ProfileDetail: View {
                                     }
                                     .offset(x: -5, y: 0)
                                 }
-                                .padding(.leading, 8)
+                                .padding(.leading, 5)
             
             FollowStateView(value: 18, title: "posts")
             FollowStateView(value: 261, title: "followers")
             FollowStateView(value: 326, title: "following")
         }
             VStack(alignment: .leading) {
-                Text("sevde aydın")
+                Text("\(user.fullname ?? "")")
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                Text("software developer")
-                    .font(.subheadline)
+                if let bio = user.bio {
+                    Text("\(bio)")
+                        .font(.subheadline)
+                }
+                
    
             }.padding(.bottom, 5)
             
             HStack(spacing: 5) {
                 Button(action: {}) {
-                    Text("Edit profile")
+                    Text("Following    ")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundColor(.tabBarItem)
@@ -178,7 +184,7 @@ private struct ProfileDetail: View {
                     .cornerRadius(7)
                 
                 Button(action: {}) {
-                    Text("Share profile")
+                    Text("Message    ")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundColor(.tabBarItem)
@@ -197,7 +203,7 @@ private struct ProfileDetail: View {
                     .cornerRadius(7)
             }
             
-        }
+        }.padding(.horizontal, 5)
     }
 }
 

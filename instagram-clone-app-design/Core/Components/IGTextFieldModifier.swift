@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct IGTextFieldModifier: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct IGTextFieldModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.subheadline)
+            .padding(12)
+            .background(Color(.systemGray6))
+            .cornerRadius(10)
+            .padding(.horizontal, 24)
     }
-}
-
-#Preview {
-    IGTextFieldModifier()
 }
