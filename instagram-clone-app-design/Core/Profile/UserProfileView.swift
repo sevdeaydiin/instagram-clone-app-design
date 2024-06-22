@@ -98,77 +98,35 @@ private struct ReelsView: View {
     }
 }
 
-private struct TagsView: View {
-    var body: some View {
-        VStack {
-            
-        }
-    }
-}
-
-private struct TopBarTrailing: View {
-    var body: some View {
-        HStack(spacing: 5) {
-            Button {} label: {
-                Image(systemName: "plus.square")
-                    .foregroundColor(.tabBarItem)
-            }
-            Button {} label: {
-                Image(systemName: "line.3.horizontal")
-                    .foregroundColor(.tabBarItem)
-            }
-            
-        }.padding(.horizontal)
-            .padding(.bottom, 10)
-    }
-}
-
 private struct ProfileDetail: View {
     let user: User
     var body: some View {
         
         VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 40) {
-            ZStack(alignment: .bottomTrailing) {
+         
                 Image("\(user.profileImageUrl ?? "")")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 90, height: 90)
                                     .clipShape(Circle())
                                 
-                ZStack {
-                                        Circle()
-                                            .fill(Color.blue)
-                                            .frame(width: 20, height: 20)
-                                            .overlay(
-                                                Circle()
-                                                    .stroke(.wB, lineWidth: 3)
-                                            )
-                                        
-                                        Text("+")
-                                            .font(.system(size: 18))
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(.wB)
-                                            
-                                    }
-                                    .offset(x: -5, y: 0)
-                                }
-                                .padding(.leading, 5)
-            
             FollowStateView(value: 18, title: "posts")
             FollowStateView(value: 261, title: "followers")
             FollowStateView(value: 326, title: "following")
         }
             VStack(alignment: .leading) {
-                Text("\(user.fullname ?? "")")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
+                if let fullname = user.fullname {
+                    Text("\(fullname)")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                }
+                
                 if let bio = user.bio {
                     Text("\(bio)")
                         .font(.subheadline)
                 }
                 
-   
             }.padding(.bottom, 5)
             
             HStack(spacing: 5) {
