@@ -1,5 +1,5 @@
 //
-//  SelfProfile.swift
+//  SelfProfileView.swift
 //  instagram-clone-app-design
 //
 //  Created by Sevde Aydın on 22.06.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SelfProfile: View {
+struct SelfProfileView: View {
     @State var index: Int = 0
     let user: User
     
@@ -61,7 +61,7 @@ struct SelfProfile: View {
 }
 
 #Preview {
-    SelfProfile(user: User.MOCK_USER[0])
+    SelfProfileView(user: User.MOCK_USER[0])
 }
 
 private struct PostsView: View {

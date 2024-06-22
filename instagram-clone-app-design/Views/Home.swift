@@ -10,12 +10,14 @@ import SwiftUI
 struct Home: View {
     var body: some View {
         NavigationStack {
-            VStack {
-                NavBar()
-                Story()
-                Divider()
-                PostView()
-                Spacer()
+            ScrollView {
+                VStack {
+                    NavBar()
+                    Story()
+                    Divider()
+                    PostView()
+                    Spacer()
+                }.ignoresSafeArea()
             }
         }
     }
@@ -76,7 +78,7 @@ struct Story: View {
 
 struct PostView: View {
     var body: some View {
-        ScrollView {
+        
             LazyVStack {
                 ForEach(Post.MOCK_POST) { feed in
                     FeedCard(post: feed)
@@ -84,5 +86,3 @@ struct PostView: View {
             }
         }
     }
-}
-
