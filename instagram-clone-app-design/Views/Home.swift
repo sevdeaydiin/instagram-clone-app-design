@@ -2,7 +2,7 @@
 //  Home.swift
 //  instagram-clone-app-design
 //
-//  Created by Sevde Aydın on 12.06.2024.
+//  Created by Sevde Aydın on 22.06.2024.
 //
 
 import SwiftUI
@@ -14,7 +14,7 @@ struct Home: View {
                 NavBar()
                 Story()
                 Divider()
-                Post()
+                PostView()
                 Spacer()
             }
         }
@@ -74,14 +74,15 @@ struct Story: View {
     }
 }
 
-struct Post: View {
+struct PostView: View {
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(0..<6, id: \.self) { feed in
-                    FeedCard()
+                ForEach(Post.MOCK_POST) { feed in
+                    FeedCard(post: feed)
                 }
             }
         }
     }
 }
+

@@ -2,7 +2,7 @@
 //  MainTabView.swift
 //  instagram-clone-app-design
 //
-//  Created by Sevde Aydın on 17.06.2024.
+//  Created by Sevde Aydın on 22.06.2024.
 //
 
 import SwiftUI
@@ -19,7 +19,7 @@ struct MainTabView: View {
                 .tabItem { Image(systemName: "plus.square") }
             ReelsPlay()
                 .tabItem { Image(systemName: "play.rectangle") }
-            SelfProfile()
+            SelfProfile(user: User.MOCK_USER[0])
                 .tabItem { Image(systemName: "person.crop.circle") }
         }
         .accentColor(.tabBarItem)

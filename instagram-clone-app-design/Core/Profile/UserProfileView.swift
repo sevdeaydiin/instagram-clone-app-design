@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+//ProfileView
 
 struct UserProfileView: View {
     @State var index: Int = 0
@@ -34,7 +35,7 @@ struct UserProfileView: View {
                 }.padding(.top, 20)
                 
                 if index == 0 {
-                    PostsView()
+                    PostsView(user: user)
                 } else if index == 1 {
                     ReelsView()
                 }
@@ -70,21 +71,14 @@ struct UserProfileView: View {
 }
 
 private struct PostsView: View {
-    private let gridItems: [GridItem] = [
-        .init(.flexible(), spacing: 2),
-        .init(.flexible(), spacing: 2),
-        .init(.flexible(), spacing: 2),
-    ]
+    let user: User
+    var posts: [Post] {
+        return Post.MOCK_POST.filter({ $0.user?.username == user.username })
+    }
+    
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: gridItems, spacing: 2) {
-                ForEach(0...0, id: \.self) { index in
-                    Image("image2")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        //.frame(height: UIScreen.main.bounds.width / 3)
-                }
-            }
+            PostGridView(posts: posts)
         }
         
     }

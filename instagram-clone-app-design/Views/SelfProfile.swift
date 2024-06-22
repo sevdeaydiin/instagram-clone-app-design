@@ -2,20 +2,20 @@
 //  SelfProfile.swift
 //  instagram-clone-app-design
 //
-//  Created by Sevde Aydın on 15.06.2024.
+//  Created by Sevde Aydın on 22.06.2024.
 //
 
 import SwiftUI
 
 struct SelfProfile: View {
     @State var index: Int = 0
+    let user: User
+    
     var body: some View {
-        
-        //NavigationStack {
             VStack {
                 //NavBar()
-                ProfileDetail()
-                
+                ProfileDetail(user: user)
+            
                 HStack(spacing: 100) {
                     Button(action: { index = 0 }) {
                         Image(systemName: "squareshape.split.3x3")
@@ -35,15 +35,14 @@ struct SelfProfile: View {
                 }.padding(.top, 20)
                 
                 if index == 0 {
-                    PostsView()
+                    PostsView(user: user)
                 } else if index == 1 {
                     ReelsView()
                 }
                 
                 Spacer()
                 
-                
-                
+
             }.toolbar {
                 
                 ToolbarItem(placement: .topBarLeading) {
@@ -59,30 +58,21 @@ struct SelfProfile: View {
                 }
         }
         }
-    //}
-    
 }
 
 #Preview {
-    SelfProfile()
+    SelfProfile(user: User.MOCK_USER[0])
 }
 
 private struct PostsView: View {
-    private let gridItems: [GridItem] = [
-        .init(.flexible(), spacing: 2),
-        .init(.flexible(), spacing: 2),
-        .init(.flexible(), spacing: 2),
-    ]
+    let user: User
+    var posts: [Post] {
+        return Post.MOCK_POST.filter({ $0.user?.username == user.username })
+    }
+    
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: gridItems, spacing: 2) {
-                ForEach(0...9, id: \.self) { index in
-                    Image("image2")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        //.frame(height: UIScreen.main.bounds.width / 3)
-                }
-            }
+            PostGridView(posts: posts)
         }
         
     }
@@ -122,12 +112,13 @@ private struct TopBarTrailing: View {
 }
 
 private struct ProfileDetail: View {
+    let user: User
+    
     var body: some View {
-        
         VStack(alignment: .leading) {
         HStack(alignment: .center, spacing: 40) {
             ZStack(alignment: .bottomTrailing) {
-                                Image("image3")
+                Image("\(user.profileImageUrl ?? "")")
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                                     .frame(width: 90, height: 90)
@@ -157,10 +148,10 @@ private struct ProfileDetail: View {
             FollowStateView(value: 326, title: "following")
         }
             VStack(alignment: .leading) {
-                Text("sevde aydın")
+                Text("\(user.fullname ?? "")")
                     .font(.subheadline)
                     .fontWeight(.semibold)
-                Text("software developer")
+                Text("\(user.bio ?? "")")
                     .font(.subheadline)
    
             }.padding(.bottom, 5)
@@ -200,4 +191,3 @@ private struct ProfileDetail: View {
         }
     }
 }
-
