@@ -13,7 +13,7 @@ struct SelfProfileView: View {
     
     var body: some View {
             VStack {
-                //NavBar()
+                NavBar()
                 ProfileDetail(user: user)
             
                 HStack(spacing: 100) {
@@ -64,6 +64,20 @@ struct SelfProfileView: View {
     SelfProfileView(user: User.MOCK_USER[0])
 }
 
+private struct NavBar: View {
+    var body: some View {
+        HStack {
+            Spacer()
+            Button {
+                AuthService.shared.signOut()
+            } label: {
+                Image(systemName: "line.3.horizontal")
+                    .foregroundStyle(Color.black)
+            }
+        }.padding()
+    }
+}
+
 private struct PostsView: View {
     let user: User
     var posts: [Post] {
@@ -101,7 +115,9 @@ private struct TopBarTrailing: View {
                 Image(systemName: "plus.square")
                     .foregroundColor(.tabBarItem)
             }
-            Button {} label: {
+            Button {
+                AuthService.shared.signOut()
+            } label: {
                 Image(systemName: "line.3.horizontal")
                     .foregroundColor(.tabBarItem)
             }

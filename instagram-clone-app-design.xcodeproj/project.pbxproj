@@ -20,6 +20,8 @@
 		B08A047D2C28376C003F7E4E /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08A047C2C28376C003F7E4E /* AuthService.swift */; };
 		B08A04842C283CD1003F7E4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08A04832C283CD1003F7E4E /* ContentView.swift */; };
 		B08A04862C283D56003F7E4E /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08A04852C283D56003F7E4E /* ContentViewModel.swift */; };
+		B08A04892C28545A003F7E4E /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08A04882C28545A003F7E4E /* RegisterViewModel.swift */; };
+		B08A048E2C28C40A003F7E4E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08A048D2C28C40A003F7E4E /* LoginViewModel.swift */; };
 		B095FFE42C273B4F0050014D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B095FFE32C273B4F0050014D /* MainTabView.swift */; };
 		B095FFE82C274DFD0050014D /* UploadPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B095FFE72C274DFD0050014D /* UploadPostView.swift */; };
 		B095FFEC2C27523B0050014D /* PostAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B095FFEB2C27523B0050014D /* PostAddViewModel.swift */; };
@@ -54,6 +56,8 @@
 		B08A047C2C28376C003F7E4E /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B08A04832C283CD1003F7E4E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		B08A04852C283D56003F7E4E /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		B08A04882C28545A003F7E4E /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		B08A048D2C28C40A003F7E4E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B095FFE32C273B4F0050014D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		B095FFE72C274DFD0050014D /* UploadPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostView.swift; sourceTree = "<group>"; };
 		B095FFEB2C27523B0050014D /* PostAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAddViewModel.swift; sourceTree = "<group>"; };
@@ -131,6 +135,15 @@
 				B08A04832C283CD1003F7E4E /* ContentView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		B08A04872C28544A003F7E4E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B08A04882C28545A003F7E4E /* RegisterViewModel.swift */,
+				B08A048D2C28C40A003F7E4E /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B09AC3E22C1A3CC500113512 = {
@@ -236,6 +249,7 @@
 		B0DF93112C20768600326BA3 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				B08A04872C28544A003F7E4E /* ViewModel */,
 				B08A047B2C28375F003F7E4E /* Service */,
 				B0A1A44A2C218B9E000A6338 /* AddEmailView.swift */,
 				B0A1A4502C21CA98000A6338 /* LoginView.swift */,
@@ -400,8 +414,10 @@
 				B0715ECF2C270F0F002E19F0 /* Home.swift in Sources */,
 				B0DF931B2C20805800326BA3 /* FollowStateView.swift in Sources */,
 				B095FFE82C274DFD0050014D /* UploadPostView.swift in Sources */,
+				B08A048E2C28C40A003F7E4E /* LoginViewModel.swift in Sources */,
 				B0E28BA92C25EBCB00ACD8F2 /* SignUpView.swift in Sources */,
 				B0E28BA72C25EAD500ACD8F2 /* IGTextFieldModifier.swift in Sources */,
+				B08A04892C28545A003F7E4E /* RegisterViewModel.swift in Sources */,
 				B0A1A4552C21F3B0000A6338 /* CreatePasswordView.swift in Sources */,
 				B0A1A4532C21F232000A6338 /* CreateUsernameView.swift in Sources */,
 				B0A1A44F2C21C644000A6338 /* LoginButton.swift in Sources */,

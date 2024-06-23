@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct SignUpView: View {
+    
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var viewModel: RegisterViewModel
     
     var body: some View {
         NavigationStack {
@@ -24,8 +26,11 @@ struct SignUpView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 24)
                 
-                NavigationLink{
-                    LoginView().navigationBarBackButtonHidden()
+                Button{
+                    Task {
+                        try await viewModel.createUser()
+                    }
+                    //LoginView().navigationBarBackButtonHidden()
                 } label: {
                     Text("Next")
                         .font(.subheadline)
@@ -59,4 +64,5 @@ struct SignUpView: View {
 
 #Preview {
     SignUpView()
+        .environmentObject(RegisterViewModel())
 }
