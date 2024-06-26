@@ -18,6 +18,10 @@ class RegisterViewModel: ObservableObject {
         guard validate() else { return }
         
         try await AuthService.shared.createUser(email: email, password: password, username: username)
+        username = ""
+        email = ""
+        password = ""
+        errorMessage = ""
     }
     
     func validate() -> Bool {

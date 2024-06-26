@@ -36,6 +36,8 @@
 		B0A1A4512C21CA98000A6338 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A1A4502C21CA98000A6338 /* LoginView.swift */; };
 		B0A1A4532C21F232000A6338 /* CreateUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A1A4522C21F232000A6338 /* CreateUsernameView.swift */; };
 		B0A1A4552C21F3B0000A6338 /* CreatePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A1A4542C21F3B0000A6338 /* CreatePasswordView.swift */; };
+		B0BCCA802C2C65F700E73766 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BCCA7F2C2C65F700E73766 /* UserService.swift */; };
+		B0BCCA842C2C670000E73766 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BCCA832C2C670000E73766 /* SearchViewModel.swift */; };
 		B0DF931B2C20805800326BA3 /* FollowStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DF931A2C20805800326BA3 /* FollowStateView.swift */; };
 		B0E28BA72C25EAD500ACD8F2 /* IGTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E28BA62C25EAD500ACD8F2 /* IGTextFieldModifier.swift */; };
 		B0E28BA92C25EBCB00ACD8F2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E28BA82C25EBCB00ACD8F2 /* SignUpView.swift */; };
@@ -73,6 +75,8 @@
 		B0A1A4502C21CA98000A6338 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B0A1A4522C21F232000A6338 /* CreateUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameView.swift; sourceTree = "<group>"; };
 		B0A1A4542C21F3B0000A6338 /* CreatePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePasswordView.swift; sourceTree = "<group>"; };
+		B0BCCA7F2C2C65F700E73766 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		B0BCCA832C2C670000E73766 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		B0DF931A2C20805800326BA3 /* FollowStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowStateView.swift; sourceTree = "<group>"; };
 		B0E28BA62C25EAD500ACD8F2 /* IGTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IGTextFieldModifier.swift; sourceTree = "<group>"; };
 		B0E28BA82C25EBCB00ACD8F2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -201,9 +205,26 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B0BCCA812C2C66E100E73766 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B0E28BAE2C25F3AB00ACD8F2 /* SearchView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B0BCCA822C2C66F100E73766 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B0BCCA832C2C670000E73766 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		B0DF930C2C20761E00326BA3 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				B0BCCA7F2C2C65F700E73766 /* UserService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -271,7 +292,8 @@
 		B0DF93132C20769C00326BA3 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				B0E28BAE2C25F3AB00ACD8F2 /* SearchView.swift */,
+				B0BCCA822C2C66F100E73766 /* ViewModel */,
+				B0BCCA812C2C66E100E73766 /* View */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -417,8 +439,10 @@
 				B08A048E2C28C40A003F7E4E /* LoginViewModel.swift in Sources */,
 				B0E28BA92C25EBCB00ACD8F2 /* SignUpView.swift in Sources */,
 				B0E28BA72C25EAD500ACD8F2 /* IGTextFieldModifier.swift in Sources */,
+				B0BCCA842C2C670000E73766 /* SearchViewModel.swift in Sources */,
 				B08A04892C28545A003F7E4E /* RegisterViewModel.swift in Sources */,
 				B0A1A4552C21F3B0000A6338 /* CreatePasswordView.swift in Sources */,
+				B0BCCA802C2C65F700E73766 /* UserService.swift in Sources */,
 				B0A1A4532C21F232000A6338 /* CreateUsernameView.swift in Sources */,
 				B0A1A44F2C21C644000A6338 /* LoginButton.swift in Sources */,
 				B0E28BAD2C25F08700ACD8F2 /* User.swift in Sources */,
