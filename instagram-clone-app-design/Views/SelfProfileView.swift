@@ -164,11 +164,19 @@ private struct ProfileDetail: View {
             FollowStateView(value: 326, title: "following")
         }
             VStack(alignment: .leading) {
-                Text("\(user.fullname ?? "")")
-                    .font(.subheadline)
-                    .fontWeight(.semibold)
-                Text("\(user.bio ?? "")")
-                    .font(.subheadline)
+                if let fullname = user.fullname {
+                    Text("\(fullname)")
+                        .font(.subheadline)
+                        .fontWeight(.semibold)
+                }
+                
+                if let bio = user.bio {
+                    Text("\(bio)")
+                        .font(.subheadline)
+                }
+                
+                Text(user.username)
+                
    
             }.padding(.bottom, 5)
             

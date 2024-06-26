@@ -26,6 +26,11 @@ struct SignUpView: View {
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 24)
                 
+                if !viewModel.errorMessage.isEmpty {
+                    Text(viewModel.errorMessage)
+                        .foregroundStyle(Color.red)
+                }
+                
                 Button{
                     Task {
                         try await viewModel.createUser()

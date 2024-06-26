@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainTabView: View {
+    let user: User
     let height: CGFloat = UIScreen.main.bounds.height
     @State private var selectedIndex = 0
     var body: some View {
@@ -32,7 +33,7 @@ struct MainTabView: View {
                 .tabItem { Image(systemName: "play.rectangle") }
                 .tag(3)
             
-            SelfProfileView(user: User.MOCK_USER[0])
+            SelfProfileView(user: user)
                 .onAppear() { selectedIndex = 4 }
                 .tabItem { Image(systemName: "person.crop.circle") }
                 .tag(4)
@@ -44,5 +45,5 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView()
+    MainTabView(user: User.MOCK_USER[0])
 }
