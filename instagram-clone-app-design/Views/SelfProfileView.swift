@@ -9,14 +9,16 @@ import SwiftUI
 
 struct SelfProfileView: View {
     @State var index: Int = 0
+    @Environment(\.dismiss) var dismiss
     let user: User
     
     var body: some View {
+        NavigationView {
             VStack {
-                NavBar()
+                //NavBar()
                 ProfileDetail(user: user)
-            
-                HStack(spacing: 100) {
+                
+                HStack(spacing: user.isCurrentUser ? 100 : 150) {
                     Button(action: { index = 0 }) {
                         Image(systemName: "squareshape.split.3x3")
                             .resizable()
@@ -27,11 +29,14 @@ struct SelfProfileView: View {
                             .resizable()
                             .frame(width: 25, height: 25)
                     }
-                    Button(action: { index = 2}) {
-                        Image(systemName: "person.crop.square")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                    }.foregroundColor(index == 2 ? .tabBarItem : .gray)
+                    if user.isCurrentUser == true {
+                        Button(action: { index = 2}) {
+                            Image(systemName: "person.crop.square")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }.foregroundColor(index == 2 ? .tabBarItem : .gray)
+                    }
+                    
                 }.padding(.top, 20)
                 
                 if index == 0 {
@@ -42,20 +47,41 @@ struct SelfProfileView: View {
                 
                 Spacer()
                 
-
-            }.toolbar {
                 
+            }.toolbar {
+
                 ToolbarItem(placement: .topBarLeading) {
-                    HStack(spacing: 3) {
-                        Image(systemName: "lock")
-                        Text("sevdeaydiin")
-                            .fontWeight(.semibold)
-                            .font(.title2)
+                    if user.isCurrentUser == true {
+                        HStack(spacing: 3) {
+                            Image(systemName: "lock")
+                            Text("\(user.username)")
+                                .fontWeight(.semibold)
+                                .font(.title2)
+                        }
+                    } else {
+                        Button {
+                            dismiss()
+                        } label: {
+                            Image(systemName: "chevron.left")
+                                .foregroundColor(.tabBarItem)
+                        }
                     }
+                    
                 }
                 ToolbarItem(placement: .topBarTrailing) {
-                    TopBarTrailing()
+                    if user.isCurrentUser == true {
+                        TopBarTrailing()
+                    } else {
+                        HStack {
+                            //Text("\(user.username)").padding(.trailing, UIScreen.main.bounds.width / 4.5)
+                            Image(systemName: "bell")
+                            Image(systemName: "ellipsis")
+                        }
+                    }
                 }
+            }
+            .navigationBarBackButtonHidden()
+                
         }
         }
 }
@@ -140,22 +166,10 @@ private struct ProfileDetail: View {
                                     .frame(width: 90, height: 90)
                                     .clipShape(Circle())
                                 
-                ZStack {
-                                        Circle()
-                                            .fill(Color.blue)
-                                            .frame(width: 20, height: 20)
-                                            .overlay(
-                                                Circle()
-                                                    .stroke(.wB, lineWidth: 3)
-                                            )
-                                        
-                                        Text("+")
-                                            .font(.system(size: 18))
-                                            .fontWeight(.semibold)
-                                            .foregroundColor(.wB)
-                                            
-                                    }
-                                    .offset(x: -5, y: 0)
+                
+                if user.isCurrentUser == true {
+                    PlusButton()
+                }  else { EmptyView() }
                                 }
                                 .padding(.leading, 8)
             
@@ -182,22 +196,23 @@ private struct ProfileDetail: View {
             
             HStack(spacing: 5) {
                 Button(action: {}) {
-                    Text("Edit profile")
+                    Text(user.isCurrentUser ? "Edit profile" : "Following")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundColor(.tabBarItem)
-                        .padding(.horizontal, 35)
+                        .padding(.horizontal, user.isCurrentUser ? 35 : 45)
                         .padding(.vertical, 8)
                         
                 }.background(Color.gray.opacity(0.15))
                     .cornerRadius(7)
+                    
                 
                 Button(action: {}) {
-                    Text("Share profile")
+                    Text(user.isCurrentUser ? "Share profile" : "Message")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundColor(.tabBarItem)
-                        .padding(.horizontal, 35)
+                        .padding(.horizontal, user.isCurrentUser ? 35 : 45)
                         .padding(.vertical, 8)
                         
                 }.background(Color.gray.opacity(0.15))
@@ -213,5 +228,23 @@ private struct ProfileDetail: View {
             }
             
         }
+    }
+}
+
+struct PlusButton: View {
+    var body: some View {
+        ZStack {
+            Circle()
+               .fill(Color.blue)
+               .frame(width: 20, height: 20)
+               .overlay(
+                    Circle()
+                      .stroke(.wB, lineWidth: 3))
+                 
+            Text("+")
+              .font(.system(size: 18))
+              .fontWeight(.semibold)
+              .foregroundColor(.wB)
+        }.offset(x: -5, y: 0)
     }
 }

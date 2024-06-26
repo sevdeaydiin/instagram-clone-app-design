@@ -29,7 +29,7 @@ struct Home: View {
 
 private struct NavBar: View {
     var body: some View {
-        HStack() {
+        HStack(spacing: 15) {
             Text("For you")
                 .font(.title2)
                 .fontWeight(.bold)
@@ -37,10 +37,13 @@ private struct NavBar: View {
             Button(action: {}) {
                 Image(systemName: "heart")
                     .foregroundColor(.tabBarItem)
+                    .font(.title3)
+                    
             }
             Button(action: {} ){
                 Image(systemName: "plus.message")
                     .foregroundColor(.tabBarItem)
+                    .font(.title3)
             }
         }
         .padding(.horizontal)

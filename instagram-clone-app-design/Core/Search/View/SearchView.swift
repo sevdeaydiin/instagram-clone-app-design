@@ -43,7 +43,7 @@ struct SearchView: View {
                                 })
                             }.padding(.horizontal)
                                 .padding(.vertical, 3)
-                        }.navigationBarBackButtonHidden()
+                        }
                     }
                 }
                 .searchable(text: $searchText, prompt: "Search...")
