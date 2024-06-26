@@ -1,4 +1,4 @@
-<img src="https://github.com/sevdeaydiin/instagram-clone-app-design/assets/74006598/16b6bea0-6247-433e-8a69-51bb6e241ff0" width="200" height="420" /> 
+<img src="https://github.com/sevdeaydiin/instagram-clone-app-design/assets/74006598/bb0ff405-99a4-4e06-8a28-f956e7ea4bf9" width="200" height="420" /> 
 <img src="https://github.com/sevdeaydiin/instagram-clone-app-design/assets/74006598/481bf944-e297-476c-8308-671c9f4b739b" width="200" height="420" /> 
 <img src="https://github.com/sevdeaydiin/instagram-clone-app-design/assets/74006598/f729500e-0206-489b-85b4-f3a1d8edca5e" width="200" height="420" /> 
 <img src="https://github.com/sevdeaydiin/instagram-clone-app-design/assets/74006598/114c1c26-0f37-432e-9795-3e413b29122b" width="200" height="420" /> 
