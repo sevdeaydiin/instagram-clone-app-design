@@ -154,6 +154,7 @@ private struct TopBarTrailing: View {
 }
 
 private struct ProfileDetail: View {
+    @State private var showEditProfile = false
     let user: User
     
     var body: some View {
@@ -188,15 +189,18 @@ private struct ProfileDetail: View {
                     Text("\(bio)")
                         .font(.subheadline)
                 }
-                
-                Text(user.username)
-                
-   
             }.padding(.bottom, 5)
             
             HStack(spacing: 5) {
-                Button(action: {}) {
-                    Text(user.isCurrentUser ? "Edit profile" : "Following")
+                Button(action: {
+                    if user.isCurrentUser {
+                        showEditProfile.toggle()
+                    } else {
+                        print("Takip edildi")
+                    }
+                    
+                }) {
+                    Text(user.isCurrentUser ? "Edit profile" : "Follow")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundColor(.tabBarItem)
@@ -228,6 +232,9 @@ private struct ProfileDetail: View {
             }
             
         }
+        .fullScreenCover(isPresented: $showEditProfile, content: {
+            EditProfileView()
+        })
     }
 }
 
