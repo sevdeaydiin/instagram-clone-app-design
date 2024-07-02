@@ -2,7 +2,7 @@
 //  SelfProfileView.swift
 //  instagram-clone-app-design
 //
-//  Created by Sevde Aydın on 22.06.2024.
+//  Created by Sevde Aydın on 2.07.2024.
 //
 
 import SwiftUI
@@ -233,7 +233,7 @@ private struct ProfileDetail: View {
             
         }
         .fullScreenCover(isPresented: $showEditProfile, content: {
-            EditProfileView()
+            EditProfileView(user: user)
         })
     }
 }
